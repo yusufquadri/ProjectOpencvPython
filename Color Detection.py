@@ -37,15 +37,15 @@ def stackImages(scale,imgArray):
 
 
 
-path = 'Resources/lambo.png'
+path = 'Resources/polkadots.jpg'
 cv2.namedWindow("TrackBars")
 cv2.resizeWindow("TrackBars",640,240)
 cv2.createTrackbar("Hue Min","TrackBars",0,179,empty)
-cv2.createTrackbar("Hue Max","TrackBars",19,179,empty)
-cv2.createTrackbar("Sat Min","TrackBars",110,255,empty)
-cv2.createTrackbar("Sat Max","TrackBars",240,255,empty)
-cv2.createTrackbar("Val Min","TrackBars",153,255,empty)
-cv2.createTrackbar("Val Max","TrackBars",255,255,empty)
+cv2.createTrackbar("Hue Max","TrackBars",0,179,empty)
+cv2.createTrackbar("Sat Min","TrackBars",0,255,empty)
+cv2.createTrackbar("Sat Max","TrackBars",0,255,empty)
+cv2.createTrackbar("Val Min","TrackBars",0,255,empty)
+cv2.createTrackbar("Val Max","TrackBars",0,255,empty)
 
 while True:
     img = cv2.imread(path)
@@ -59,10 +59,10 @@ while True:
    # print(h_min,h_max,s_min,s_max,v_min,v_max)
 
     lower = np.array([h_min,s_min,v_min])
-    print(lower)
+    #print(lower)
 
     upper = np.array([h_max,s_max,v_max])
-    print(upper)
+    #print(upper)
     mask = cv2.inRange(imgHSV,lower,upper)
     imgResult = cv2.bitwise_and(img,img,mask=mask)
 
